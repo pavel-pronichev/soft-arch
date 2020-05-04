@@ -1,1 +1,4 @@
 fastapi[all]
+alembic
+SQLAlchemy
+psycopg2-binary

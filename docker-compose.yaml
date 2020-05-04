@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  database:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      PGDATA: /var/lib/postgres/data
+    volumes:
+    - ./db_data:/var/lib/postgres/data
+    - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    ports:
+    - "5432:5432"
+
+  app:
+    build:
+      context: .
+
+    volumes:
+    - ./src/:/app/
+
+    ports:
+      - 80:80
+
+    depends_on:
+      - database
+
+    command: ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]

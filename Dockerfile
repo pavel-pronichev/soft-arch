@@ -8,13 +8,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.* \
     && pip freeze
 
-WORKDIR app
+COPY src /app
 
-COPY run.sh .
-COPY src/ .
+WORKDIR /app
 
-RUN ls -al
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app:main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
 
 
