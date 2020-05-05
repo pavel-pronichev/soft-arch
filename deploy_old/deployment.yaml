@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: soft-arch
-          image: skyrex/soft-architect:v2.1
+          image: skyrex/soft-architect:v3.1
           ports:
             - name: web
               containerPort: 80

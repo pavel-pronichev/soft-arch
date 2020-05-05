@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: soft-arch-config
+data:
+  DB_HOST: {{(include "postgresql.fullname" .)}}
+  DB_NAME: {{.Values.db.dbBase}}
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: soft-arch-secret
+type: Opaque
+data:
+  DB_USER: {{.Values.db.dbUser | b64enc}}
+  DB_PWD: {{.Values.db.dbPWD | b64enc}}

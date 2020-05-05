@@ -1,6 +1,8 @@
 #!/bin/bash
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+echo "$POSTGRES_USER"
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     CREATE USER soft_arch_user
     WITH PASSWORD '123456';
 
@@ -10,3 +12,5 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
 
     CREATE DATABASE softarch;
 EOSQL
+
+echo "Hello world"

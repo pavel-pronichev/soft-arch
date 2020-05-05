@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app import crud
-from app.database import SessionLocal
+from database.db import SessionLocal
 from app.schemas import UserCreate, UserMain, UserUpdate
 
 app = FastAPI()
