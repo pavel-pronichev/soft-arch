@@ -2,12 +2,16 @@ from typing import List
 
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
+from starlette_exporter import PrometheusMiddleware, handle_metrics
 
 from app import crud
-from database.db import SessionLocal
 from app.schemas import UserCreate, UserMain, UserUpdate
+from database.db import SessionLocal
 
 app = FastAPI()
+
+app.add_middleware(PrometheusMiddleware)
+app.add_route("/metrics", handle_metrics)
 
 
 def get_db():

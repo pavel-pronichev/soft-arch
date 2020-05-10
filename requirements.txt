@@ -2,3 +2,5 @@ fastapi[all]
 alembic
 SQLAlchemy
 psycopg2-binary
+prometheus-client
+starlette-exporter
