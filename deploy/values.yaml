@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: skyrex/soft-architect
   pullPolicy: IfNotPresent
-  tag: v3.3
+  tag: v4.1
 
 imagePullSecrets: []
 nameOverride: ""
@@ -88,3 +88,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+metrics:
+  serviceMonitor:
+    enabled: true

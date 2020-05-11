@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "myapp"
+spec:
+  template:
+    metadata:
+      name: "myapp"
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: stress-test-job
+          image: skyrex/stress-util:v0.0.2
+          env:
+            - name: HOSTNAME
+              value: arch.homework/otusapp
+            - name: CREATE_WEIGHT
+              value: "0.5"
+            - name: ALL_USERS_WEIGHT
+              value: "0.2"
+            - name: GET_USER_WEIGHT
+              value: "0.6"
+            - name: UPDATE_USER_WEIGHT
+              value: "0.5"
+            - name: DELETE_USER_WEIGHT
+              value: "0.2"
+  backoffLimit: 0

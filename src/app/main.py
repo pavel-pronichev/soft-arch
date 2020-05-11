@@ -10,7 +10,7 @@ from database.db import SessionLocal
 
 app = FastAPI()
 
-app.add_middleware(PrometheusMiddleware)
+app.add_middleware(PrometheusMiddleware, app_name="soft_arch_app", group_paths=True)
 app.add_route("/metrics", handle_metrics)
 
 
